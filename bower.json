@@ -1,0 +1,20 @@
+{
+  "name": "cp-2014",
+  "version": "0.1.0",
+  "homepage": "https://github.com/Chaser324/cp-2014",
+  "authors": [
+    "Chase Pettit <chasepettit@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/bower",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+  }
+}
