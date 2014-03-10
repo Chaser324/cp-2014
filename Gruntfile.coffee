@@ -10,7 +10,7 @@ module.exports = (grunt) ->
             main:
                 files: [
                     {
-                        src: ['index.html']
+                        src: ['index.html', 'assets/img/*']
                         dest: 'dist/'
                         expand: true
                     }
