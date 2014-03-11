@@ -8,7 +8,6 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 2px 2px 0 #000;
 }
 
-
 #main-header {
     position: fixed;
 
@@ -26,6 +25,15 @@ h1, h2, h3, h4, h5, h6 {
     background-repeat: repeat-x;
     background-position: left bottom;
 
+    @keyframes star-translate {
+        from { background-position-x: 0px; }
+        to { background-position-x: 645px; }
+    }
+
+    @-webkit-keyframes star-translate {
+        from {background-position-x: 0px;}
+        to {background-position-x: 645px;}
+    }
 
     .header-stars {
         position: absolute;
@@ -38,8 +46,11 @@ h1, h2, h3, h4, h5, h6 {
         z-index: 2;
 
         background-image: url(../img/header-stars.png);
-        background-repeat: repeat-x;
-        background-position: left top;
+        background-repeat: repeat;
+        background-position: 0px 0px;
+
+        animation: star-translate 90s linear infinite;
+        -webkit-animation: star-translate 90s linear infinite;
     }
 
     .header-moon {
@@ -62,6 +73,8 @@ h1, h2, h3, h4, h5, h6 {
 #content {
     position: relative;
     z-index: 1;
+
+    height: 3000px;
 }
 
 #content-header {
