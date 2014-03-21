@@ -4,7 +4,11 @@ module.exports = (grunt) ->
 
     grunt.initConfig
 
-        clean: ['dist/']
+        clean:
+            all:
+                ['dist/']
+            js:
+                ['dist/assets/js/']
 
         copy:
             main:
@@ -46,6 +50,8 @@ module.exports = (grunt) ->
                     preserveComments: true;
                 files:
                     'dist/assets/js/scripts.min.js': [
+                        'vendor/bower/jquery/dist/jquery.js'
+
                         'vendor/bower/bootstrap/js/transition.js'
                         'vendor/bower/bootstrap/js/alert.js'
                         'vendor/bower/bootstrap/js/button.js'
@@ -59,6 +65,10 @@ module.exports = (grunt) ->
                         'vendor/bower/bootstrap/js/tab.js'
                         'vendor/bower/bootstrap/js/affix.js'
 
+                        'vendor/bower/lodash/dist/lodash.js'
+
+                        'vendor/bower/backbone/backbone.js'
+
                         'assets/js/*.js'
                         'dist/assets/js/*.js'
                     ]
@@ -71,10 +81,18 @@ module.exports = (grunt) ->
                 tasks: ['less']
             copy:
                 files: ['index.html']
-                tasks: ['clean', 'coffee', 'uglify', 'less', 'copy']
+                tasks: ['copy']
             uglify:
                 files: ['assets/js/*']
-                tasks: ['clean', 'coffee', 'uglify', 'less', 'copy']
+                tasks: ['clean:js', 'coffee', 'uglify']
+            yaml:
+                files: ['assets/data/*']
+                tasks: ['yaml']
+
+        yaml:
+            main:
+                files:
+                    'dist/assets/data/entries.json': ['assets/data/entries.yml']
 
     grunt.loadNpmTasks 'grunt-contrib-clean'
     grunt.loadNpmTasks 'grunt-contrib-connect'
@@ -83,11 +101,13 @@ module.exports = (grunt) ->
     grunt.loadNpmTasks 'grunt-contrib-coffee'
     grunt.loadNpmTasks 'grunt-contrib-less'
     grunt.loadNpmTasks 'grunt-contrib-watch'
+    grunt.loadNpmTasks 'grunt-yaml'
+
 
     grunt.registerTask 'default', [
-        'clean', 'coffee', 'uglify', 'less', 'copy'
+        'clean:all', 'coffee', 'uglify', 'less', 'copy', 'yaml'
     ]
 
-    grunt.registerTask 'default', [
-        'clean', 'coffee', 'uglify', 'less', 'copy', 'connect', 'watch'
+    grunt.registerTask 'dev', [
+        'clean:all', 'coffee', 'uglify', 'less', 'copy', 'yaml', 'connect', 'watch'
     ]
