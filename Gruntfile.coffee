@@ -14,7 +14,7 @@ module.exports = (grunt) ->
             main:
                 files: [
                     {
-                        src: ['index.html', 'assets/img/*']
+                        src: ['index.html', 'assets/img/*', 'site-entry.hbs']
                         dest: 'dist/'
                         expand: true
                     }
@@ -68,6 +68,8 @@ module.exports = (grunt) ->
                         'vendor/bower/lodash/dist/lodash.js'
 
                         'vendor/bower/backbone/backbone.js'
+
+                        'vendor/bower/handlebars/handlebars.js'
 
                         'assets/js/*.js'
                         'dist/assets/js/*.js'

@@ -1,0 +1,10 @@
+<h1>{{this.title}}</h1>
+<p>{{this.description}}</p>
+
+{{#if this.mainimg}}
+    <a href="this.mainimg.full"><img src="this.mainimg.thumb" /></a>
+{{/if}}
+
+{{#each this.images}}
+    <a href="this.full"><img src="this.thumb" /></a>
+{{/each}}

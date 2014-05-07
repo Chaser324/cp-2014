@@ -27,9 +27,19 @@ EntryView = Backbone.View.extend
 
     el: '#site-entry-content'
 
+    template: null
+
+    initialize: ->
+        $.ajax
+            url: '/site-entry.hbs'
+            method: 'GET'
+            async: false
+            context: this
+            success: (data) ->
+                this.template = Handlebars.compile data
+
     render: ->
-        this.$(".title").text @model.get('title')
-        this.$(".description").text @model.get('description')
+        $(this.el).html this.template this.model.toJSON()
 
 EntryRouter = Backbone.Router.extend
     routes:

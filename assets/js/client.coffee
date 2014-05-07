@@ -9,10 +9,6 @@ InitPage = ->
     currentDate = new Date()
     $('.current-date').text currentDate.getFullYear()
 
-    # $('.header-down a').click ->
-    #     $('html, body').animate { scrollTop: $( '#content' ).offset().top }, 400
-    #     return false
-
 ColorLuminance = (hex,lum) ->
     hex = String(hex).replace(/[^0-9a-f]/gi, '')
     if hex.length < 6
